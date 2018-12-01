@@ -75,8 +75,8 @@ function draw() {
         }
     }
 
-    for (var i in grassArr) {
-        grassArr[i].mult();
+    for (var p in grassArr) {
+        grassArr[p].mult();
     }
     for (var p in xotakerArr) {
         xotakerArr[p].eat();
@@ -100,8 +100,6 @@ function draw() {
     for (var p in wizardArr) {
         wizardArr[p].Create();
         wizardArr[p].move();
-
     }
-
 }
 
