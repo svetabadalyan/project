@@ -1,11 +1,16 @@
-class Grass extends LivingCreature {
+var LivingCreature = require("./class_LivingCreature.js");
+
+module.exports = class Grass extends LivingCreature {
     constructor(x, y) {
         super(x, y);
         this.multiply = 0;
     }
 
+    
+    
     mult() {
-        var empty = random(this.chooseCell(0));
+        var datark = this.chooseCell(0);
+        var empty = datark[Math.floor(Math.random()*datark.length)];
         this.multiply++;
 
         if (empty && this.multiply > 3) {

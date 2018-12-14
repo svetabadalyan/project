@@ -1,4 +1,6 @@
-class Wizard extends LivingCreature {
+var LivingCreature = require("./class_LivingCreature.js");
+
+module.exports = class Wizard extends LivingCreature {
     constructor(x, y) {
         super(x, y);
         this.energy = 5;
@@ -21,6 +23,8 @@ class Wizard extends LivingCreature {
     }
 
     move() {
+        var datark = this.chooseCell(0);
+        var empty = datark[Math.floor(Math.random()*datark.length)];
         var empty = random(this.chooseCell(0));
         if (empty) {
             var newX = empty[0];
@@ -34,7 +38,8 @@ class Wizard extends LivingCreature {
     }
 
     Create() {
-        var stextsvox = random(this.chooseCell(0));
+        var datark = this.chooseCell(0);
+        var stextsvox = datark[Math.floor(Math.random()*datark.length)];
         if (stextsvox) {
             var newX = stextsvox[0];
             var newY = stextsvox[1];

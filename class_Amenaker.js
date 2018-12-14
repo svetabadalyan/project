@@ -1,4 +1,6 @@
-class Amenaker extends LivingCreature {
+var LivingCreature = require("./class_LivingCreature.js");
+
+module.exports = class Amenaker extends LivingCreature {
     constructor(x, y) {
         super(x, y);
         this.energy = 5;
@@ -20,7 +22,8 @@ class Amenaker extends LivingCreature {
         return super.chooseCell(character);
     }
     mult() {
-        var empty = random(this.chooseCell(0));
+        var datark = this.chooseCell(0);
+        var empty = datark[Math.floor(Math.random()*datark.length)];
 
         if (empty && this.energy > 10) {
             var newX = empty[0];
@@ -32,7 +35,8 @@ class Amenaker extends LivingCreature {
         }
     }
     move() {
-        var empty = random(this.chooseCell(0));
+        var datark = this.chooseCell(0);
+        var empty = datark[Math.floor(Math.random()*datark.length)];
         this.energy--;
         if (empty) {
             var newX = empty[0];
@@ -46,7 +50,8 @@ class Amenaker extends LivingCreature {
     }
 
     eatXotaker() {
-        var food = random(this.chooseCell(2));
+        var xotaker = this.chooseCell(2);
+        var food= xotaker[Math.floor(Math.random()*xotaker.length)];
         if (food) {
             var newX = food[0];
             var newY = food[1];
@@ -65,7 +70,8 @@ class Amenaker extends LivingCreature {
         }
     }
     eatGishatich() {
-        var food = random(this.chooseCell(3));
+        var gishatich = this.chooseCell(3);
+        var food= gishatich[Math.floor(Math.random()*gishatich.length)];
         if (food) {
             var newX = food[0];
             var newY = food[1];

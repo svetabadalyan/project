@@ -38,7 +38,6 @@ function setup() {
                 wizardArr.push(wizard);
             }
 
-
         }
     }
 
