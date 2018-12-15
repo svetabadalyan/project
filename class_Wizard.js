@@ -1,4 +1,8 @@
 var LivingCreature = require("./class_LivingCreature.js");
+var Grass = require("./class_Grass.js");
+var Xotaker = require("./class_Xotaker.js");
+var Gishatich = require("./class_Gishatich.js");
+var Amenaker = require("./class_Amenaker.js");
 
 module.exports = class Wizard extends LivingCreature {
     constructor(x, y) {
@@ -24,8 +28,7 @@ module.exports = class Wizard extends LivingCreature {
 
     move() {
         var datark = this.chooseCell(0);
-        var empty = datark[Math.floor(Math.random()*datark.length)];
-        var empty = random(this.chooseCell(0));
+        var empty = datark[Math.floor(Math.random() * datark.length)];
         if (empty) {
             var newX = empty[0];
             var newY = empty[1];
@@ -39,7 +42,7 @@ module.exports = class Wizard extends LivingCreature {
 
     Create() {
         var datark = this.chooseCell(0);
-        var stextsvox = datark[Math.floor(Math.random()*datark.length)];
+        var stextsvox = datark[Math.floor(Math.random() * datark.length)];
         if (stextsvox) {
             var newX = stextsvox[0];
             var newY = stextsvox[1];

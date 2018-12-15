@@ -1,0 +1,24 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/svetabadalyan/project.git"
+  },
+  "author": "Svetlana Badalyan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/svetabadalyan/project/issues"
+  },
+  "homepage": "https://github.com/svetabadalyan/project#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "socket.io": "^2.2.0"
+  }
+}
