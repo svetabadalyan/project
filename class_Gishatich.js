@@ -23,21 +23,23 @@ module.exports = class Gishatich extends LivingCreature {
         return super.chooseCell(character);
     }
     mult() {
-        var datark = this.chooseCell(0);
-        var empty = datark[Math.floor(Math.random()*datark.length)];
+        if (weather != "winter") {
+            var datark = this.chooseCell(0);
+            var empty = datark[Math.floor(Math.random() * datark.length)];
 
-        if (empty && this.energy > 10) {
-            var newX = empty[0];
-            var newY = empty[1];
-            matrix[newY][newX] = 2;
-            var xt = new Gishatich(newX, newY);
-            gishatichArr.push(xt);
-            this.multiply = 0;
+            if (empty && this.energy > 10) {
+                var newX = empty[0];
+                var newY = empty[1];
+                matrix[newY][newX] = 2;
+                var xt = new Gishatich(newX, newY);
+                gishatichArr.push(xt);
+                this.multiply = 0;
+            }
         }
     }
     move() {
         var datark = this.chooseCell(0);
-        var empty = datark[Math.floor(Math.random()*datark.length)];
+        var empty = datark[Math.floor(Math.random() * datark.length)];
         this.energy--;
         if (empty) {
             var newX = empty[0];
@@ -52,7 +54,7 @@ module.exports = class Gishatich extends LivingCreature {
 
     eat() {
         var xotaker = this.chooseCell(2);
-        var food= xotaker[Math.floor(Math.random()*xotaker.length)];
+        var food = xotaker[Math.floor(Math.random() * xotaker.length)];
         if (food) {
             var newX = food[0];
             var newY = food[1];

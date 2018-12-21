@@ -22,21 +22,23 @@ module.exports = class Xotaker extends LivingCreature {
         return super.chooseCell(character);
     }
     mult() {
-        var datark = this.chooseCell(0);
-        var empty = datark[Math.floor(Math.random()*datark.length)];
+        if (weather != "winter") {
+            var datark = this.chooseCell(0);
+            var empty = datark[Math.floor(Math.random() * datark.length)];
 
-        if (empty && this.energy > 5) {
-            var newX = empty[0];
-            var newY = empty[1];
-            matrix[newY][newX] = 2;
-            var xt = new Xotaker(newX, newY);
-            xotakerArr.push(xt);
-            this.multiply = 0;
+            if (empty && this.energy > 5) {
+                var newX = empty[0];
+                var newY = empty[1];
+                matrix[newY][newX] = 2;
+                var xt = new Xotaker(newX, newY);
+                xotakerArr.push(xt);
+                this.multiply = 0;
+            }
         }
     }
     move() {
         var datark = this.chooseCell(0);
-        var empty = datark[Math.floor(Math.random()*datark.length)];
+        var empty = datark[Math.floor(Math.random() * datark.length)];
         this.energy--;
         if (empty) {
             var newX = empty[0];
@@ -51,7 +53,7 @@ module.exports = class Xotaker extends LivingCreature {
 
     eat() {
         var xoter = this.chooseCell(1);
-        var food= xoter[Math.floor(Math.random()*xoter.length)];
+        var food = xoter[Math.floor(Math.random() * xoter.length)];
         if (food) {
             var newX = food[0];
             var newY = food[1];

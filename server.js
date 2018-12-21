@@ -33,35 +33,54 @@ gishatichArr = [];
 amenakerArr = [];
 wizardArr = [];
 
+
+grass_s = 0;
+xotaker_s = 0;
+gishatich_s = 0;
+amenaker_s = 0;
+wizard_s = 0;
+weather = "";
+
+
 for (var y = 0; y < matrix.length; y++) {
     for (var x = 0; x < matrix[y].length; x++) {
         if (matrix[y][x] == 1) {
             var gr = new Grass(x, y);
             grassArr.push(gr);
+            grass_s = grass_s + 1;
         }
         else if (matrix[y][x] == 2) {
             var xt = new Xotaker(x, y);
             xotakerArr.push(xt);
+            xotaker_s = xotaker_s + 1;
         }
         else if (matrix[y][x] == 3) {
             var gish = new Gishatich(x, y);
             gishatichArr.push(gish);
+            gishatich_s = gishatich_s + 1;
         }
         else if (matrix[y][x] == 4) {
             var amenaker = new Amenaker(x, y);
             amenakerArr.push(amenaker);
+            amenaker_s = amenaker_s + 1;
         }
         else if (matrix[y][x] == 5) {
             var wizard = new Wizard(x, y);
             wizardArr.push(wizard);
+            wizard_s = wizard_s + 1;
         }
 
 
     }
 }
+console.log(grass_s, xotaker_s, gishatich_s, amenaker_s, wizard_s);
 
 io.on('connection', function (socket) {
-    //io.sockets.emit('matrix', matrix);
+    socket.on("weather", function (w) {
+
+        weather = w;
+        console.log(weather);
+    })
 });
 
 setInterval(drawServerayin, 1000);
@@ -95,5 +114,7 @@ function drawServerayin() {
         wizardArr[p].move();
     }
     //console.log(matrix);
-    io.sockets.emit('matrix', matrix);
+    io.sockets.emit('matrix', [matrix,weather]);
 }
+
+

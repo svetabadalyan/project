@@ -22,17 +22,20 @@ module.exports = class Amenaker extends LivingCreature {
         return super.chooseCell(character);
     }
     mult() {
-        var datark = this.chooseCell(0);
-        var empty = datark[Math.floor(Math.random()*datark.length)];
-
-        if (empty && this.energy > 10) {
-            var newX = empty[0];
-            var newY = empty[1];
-            matrix[newY][newX] = 2;
-            var xt = new Amenaker(newX, newY);
-            amenakerArr.push(xt);
-            this.multiply = 0;
+        if(weather != "winter"){
+            var datark = this.chooseCell(0);
+            var empty = datark[Math.floor(Math.random()*datark.length)];
+    
+            if (empty && this.energy > 10) {
+                var newX = empty[0];
+                var newY = empty[1];
+                matrix[newY][newX] = 2;
+                var xt = new Amenaker(newX, newY);
+                amenakerArr.push(xt);
+                this.multiply = 0;
+            }
         }
+        
     }
     move() {
         var datark = this.chooseCell(0);
