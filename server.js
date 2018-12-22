@@ -24,7 +24,7 @@ var Xotaker = require("./class_Xotaker.js");
 var Gishatich = require("./class_Gishatich.js");
 var Amenaker = require("./class_Amenaker.js");
 var Wizard = require("./class_Wizard.js");
-
+var fs = require("fs");
 
 
 grassArr = [];
@@ -38,7 +38,9 @@ grass_s = 0;
 xotaker_s = 0;
 gishatich_s = 0;
 amenaker_s = 0;
-wizard_s = 0;
+xotaker_kerav = 0;
+gishatich_kerav = 0;
+amenaker_kerav = 0;
 weather = "";
 
 
@@ -47,39 +49,32 @@ for (var y = 0; y < matrix.length; y++) {
         if (matrix[y][x] == 1) {
             var gr = new Grass(x, y);
             grassArr.push(gr);
-            grass_s = grass_s + 1;
         }
         else if (matrix[y][x] == 2) {
             var xt = new Xotaker(x, y);
             xotakerArr.push(xt);
-            xotaker_s = xotaker_s + 1;
         }
         else if (matrix[y][x] == 3) {
             var gish = new Gishatich(x, y);
             gishatichArr.push(gish);
-            gishatich_s = gishatich_s + 1;
         }
         else if (matrix[y][x] == 4) {
             var amenaker = new Amenaker(x, y);
             amenakerArr.push(amenaker);
-            amenaker_s = amenaker_s + 1;
         }
         else if (matrix[y][x] == 5) {
             var wizard = new Wizard(x, y);
             wizardArr.push(wizard);
-            wizard_s = wizard_s + 1;
         }
 
 
     }
 }
-console.log(grass_s, xotaker_s, gishatich_s, amenaker_s, wizard_s);
 
 io.on('connection', function (socket) {
     socket.on("weather", function (w) {
-
         weather = w;
-        console.log(weather);
+        //console.log(weather);
     })
 });
 
@@ -114,7 +109,13 @@ function drawServerayin() {
         wizardArr[p].move();
     }
     //console.log(matrix);
-    io.sockets.emit('matrix', [matrix,weather]);
+    io.sockets.emit('matrix', [matrix, weather]);
 }
 
-
+var obj = {"info": []}
+function main (){
+    var file = 'statistics.json';
+    obj.info.push({"Grass haytnvel": grass_s,"Gishatich haytnvel": gishatich_s, "Xotaker haytnvel": xotaker_s, "Amenaker Haytnvel": amenaker_s, "xotakery kerav": xotaker_kerav,"gishatich kerav": gishatich_kerav, "amenaker kerav": amenaker_kerav })
+    fs.writeFileSync(file, JSON.stringify(obj));
+}
+setInterval(main, 1000);

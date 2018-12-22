@@ -33,6 +33,7 @@ module.exports = class Amenaker extends LivingCreature {
                 var xt = new Amenaker(newX, newY);
                 amenakerArr.push(xt);
                 this.multiply = 0;
+                amenaker_s++;
             }
         }
         
@@ -70,6 +71,7 @@ module.exports = class Amenaker extends LivingCreature {
             this.x = newX;
             this.y = newY;
             this.energy += 2;
+            amenaker_kerav++;
         }
     }
     eatGishatich() {
@@ -90,6 +92,7 @@ module.exports = class Amenaker extends LivingCreature {
             this.x = newX;
             this.y = newY;
             this.energy += 2;
+            amenaker_kerav++;
         }
     }
     die() {

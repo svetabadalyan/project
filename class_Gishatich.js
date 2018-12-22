@@ -34,6 +34,7 @@ module.exports = class Gishatich extends LivingCreature {
                 var xt = new Gishatich(newX, newY);
                 gishatichArr.push(xt);
                 this.multiply = 0;
+                gishatich_s++;
             }
         }
     }
@@ -70,6 +71,7 @@ module.exports = class Gishatich extends LivingCreature {
             this.x = newX;
             this.y = newY;
             this.energy += 2;
+            gishatich_kerav++;
         }
     }
 

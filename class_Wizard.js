@@ -41,31 +41,37 @@ module.exports = class Wizard extends LivingCreature {
     }
 
     Create() {
-        var datark = this.chooseCell(0);
-        var stextsvox = datark[Math.floor(Math.random() * datark.length)];
-        if (stextsvox) {
-            var newX = stextsvox[0];
-            var newY = stextsvox[1];
-            matrix[newY][newX] = Math.round(Math.random() * 3 + 1);
-
-            if (matrix[newY][newX] == 1) {
-                var gr = new Grass(newX, newY)
-                grassArr.push(gr);
-
+        //բոլոր եղանակներին, բացի ձմեռվանից, այն նոր կեչպարներ կստեղծի
+        if(we != "winter"){
+            var datark = this.chooseCell(0);
+            var stextsvox = datark[Math.floor(Math.random() * datark.length)];
+            if (stextsvox) {
+                var newX = stextsvox[0];
+                var newY = stextsvox[1];
+                matrix[newY][newX] = Math.round(Math.random() * 3 + 1);
+    
+                if (matrix[newY][newX] == 1) {
+                    var gr = new Grass(newX, newY)
+                    grassArr.push(gr);
+    
+                }
+                else if (matrix[newY][newX] == 2) {
+                    var xk = new Xotaker(newX, newY)
+                    xotakerArr.push(xk);
+                }
+                else if (matrix[newY][newX] == 3) {
+                    var gish = new Gishatich(newX, newY)
+                    gishatichArr.push(gish);
+                }
+                else if (matrix[newY][newX] == 4) {
+                    var ak = new Amenaker(newX, newY)
+                    amenakerArr.push(ak);
+                }
+    
             }
-            else if (matrix[newY][newX] == 2) {
-                var xk = new Xotaker(newX, newY)
-                xotakerArr.push(xk);
-            }
-            else if (matrix[newY][newX] == 3) {
-                var gish = new Gishatich(newX, newY)
-                gishatichArr.push(gish);
-            }
-            else if (matrix[newY][newX] == 4) {
-                var ak = new Amenaker(newX, newY)
-                amenakerArr.push(ak);
-            }
-
         }
+        
+
+        
     }
 }

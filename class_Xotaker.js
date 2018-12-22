@@ -33,6 +33,7 @@ module.exports = class Xotaker extends LivingCreature {
                 var xt = new Xotaker(newX, newY);
                 xotakerArr.push(xt);
                 this.multiply = 0;
+                xotaker_s++;
             }
         }
     }
@@ -69,6 +70,7 @@ module.exports = class Xotaker extends LivingCreature {
             this.x = newX;
             this.y = newY;
             this.energy += 2;
+            xotaker_kerav++;
         }
     }
 

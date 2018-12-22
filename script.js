@@ -34,12 +34,22 @@ function setup() {
 function drawMatrix(arr) {
     var matrix = arr[0];
     var we = arr[1];
-    console.log(we);
+    //console.log(we);
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
             if (matrix[y][x] == 1) {
+                //ամեն եղանակին տարբեր գույն կունենա
                 if (we == "spring") {
                     fill("lightgreen");
+                }
+                else if (we == "snow") {
+                    fill("white");
+                }
+                else if (we == "rain" || we == "autumn") {
+                    fill("#135921");
+                }
+                if (we == "summer") {
+                    fill('#30ff59');
                 }
                 else {
                     fill("green");
@@ -57,7 +67,7 @@ function drawMatrix(arr) {
                 fill("#acacac");
             }
             else if (matrix[y][x] == 3) {
-                if (we == "autumn") {
+                if (we == "autumn" || we == "rain") {
                     fill('black');
                 }
                 else {
@@ -65,7 +75,7 @@ function drawMatrix(arr) {
                 }
             }
             else if (matrix[y][x] == 4) {
-                if (we == "autumn") {
+                if (we == "autumn" || we == "rain") {
                     fill('#7f1111');
                 }
                 else {
